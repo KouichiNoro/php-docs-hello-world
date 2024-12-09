@@ -25,6 +25,6 @@ $paypay = new \Paypaytest\Classes\PayPayAdapter($config);
 $result = $paypay->createCode($orderItems, '商品B x 1');
 
 $url = $result['data']['url'];
-print "redirect-url: $url <\br></br>\n\n";
+print "redirect-url: <a href='$url'>$url</a> </br>\n";
 
 var_dump($result);die();
