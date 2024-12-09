@@ -27,4 +27,7 @@ $result = $paypay->createCode($orderItems, '商品B x 1');
 $url = $result['data']['url'];
 print "redirect-url: <a href='$url'>$url</a> </br>\n";
 
+print "<a href=\"javascript: window.open('$url', '_blank');\">Click</a> </br>\n";
+
+
 var_dump($result);die();
