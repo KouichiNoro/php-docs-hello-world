@@ -11,7 +11,7 @@ $config = new \Paypaytest\Classes\Config([
     'merchantId'      => '737466058778624000',
     'apiKey'          => 'a_FA9nHR6ChK_OpaD',
     'apiSecret'       => 'nSr6RRfvJ2LWWrg8hQBbKvJ5hL2xEOMuyufC2rIzf2k=',
-    'redirectUrl'     => 'https://localhost/paypay3/response.php',
+    'redirectUrl'     => 'paypaytest://paypaytest.com/homePage',
     'isAuthorization' => false,
     'production'      => false,
 ]);
