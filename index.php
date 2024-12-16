@@ -1,8 +1,12 @@
-<HTML>
+<!doctype html>
+
+<HTML lang="ja">
 
 <HEAD></HEAD>
 
 <BODY>
+
+Version 0.0.1
 
 <form action="https://paypaytest01-c7gebhc9bndgdyg4.japaneast-01.azurewebsites.net/PayPayCreateQR.php" method="get" target="_blank">
     <label>QRコード作成：</label>
