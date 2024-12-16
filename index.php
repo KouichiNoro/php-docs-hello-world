@@ -1,33 +1,21 @@
-<?php
+<HTML>
 
-require_once './vendor/autoload.php';
+<HEAD></HEAD>
 
-require_once './paypaytest/classes/OrderItems.php';
-require_once './paypaytest/classes/Config.php';
-require_once './paypaytest/classes/PayPayAdapter.php';
+<BODY>
 
-$orderItems = new \Paypaytest\Classes\OrderItems();
-// $orderItems->add('商品A', 1, 500);
-// $orderItems->add('商品B', 3, 1000);
-// $orderItems->add('商品C', 2, 900);
-$orderItems->add('商品B', 1, 1000);
+<form action="https://localhost/paypay3/PayPayCreateQR.php" method="get" target="_blank">
+    <label>QRコード作成：</label>
+    <input type="submit" value="作成" />
+</form>
 
-$config = new \Paypaytest\Classes\Config([
-    'merchantId'      => '737466058778624000',
-    'apiKey'          => 'a_FA9nHR6ChK_OpaD',
-    'apiSecret'       => 'nSr6RRfvJ2LWWrg8hQBbKvJ5hL2xEOMuyufC2rIzf2k=',
-    'redirectUrl'     => 'https://localhost/paypay3/response.php',
-    'isAuthorization' => false,
-    'production'      => false,
-]);
+<form action="https://localhost/paypay3/PayPayDeleteQR.php" method="get" target="_blank">
+    <label>QRコード削除：</label><input type="text" name="codeId">
+    <input type="submit" value="削除" />
+</form>
 
-$paypay = new \Paypaytest\Classes\PayPayAdapter($config);
-$result = $paypay->createCode($orderItems, '商品B x 1');
-
-$url = $result['data']['url'];
-print "redirect-url: <a href='$url'>$url</a> </br>\n";
-
-print "<a href=\"javascript: window.open('$url', '_blank');\">Click</a> </br>\n";
+</BODY>
 
 
-var_dump($result);die();
+
+</HTML>

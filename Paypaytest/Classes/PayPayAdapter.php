@@ -4,6 +4,7 @@ namespace Paypaytest\Classes;
 
 use PayPay\OpenPaymentAPI\Client;
 use PayPay\OpenPaymentAPI\Models\CreateQrCodePayload;
+// use PayPay\OpenPaymentAPI\Controller\String;
 
 class PayPayAdapter
 {
@@ -46,5 +47,16 @@ class PayPayAdapter
         $payload->setRedirectUrl($this->config->redirectUrl());
 
         return $client->code->createQRCode($payload);
+    }
+
+    public function deleteCode(string $codeId)
+    {
+        $client = new Client([
+            'API_KEY'     => $this->config->apiKey(),
+            'API_SECRET'  => $this->config->apiSecret(),
+            'MERCHANT_ID' => $this->config->merchantId(),
+        ], $this->config->isProduction());
+
+        return $client->code->deleteQRCode($codeId);
     }
 }
