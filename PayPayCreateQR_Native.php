@@ -4,10 +4,11 @@ require_once './vendor/autoload.php';
 
 require_once './paypaytest/classes/OrderItems.php';
 require_once './paypaytest/classes/Config.php';
-require_once './paypaytest/classes/PayPayAdapter.php';
+require_once './paypaytest/classes/PayPayAdapterNativeConnect.php';
+
 
 $orderItems = new \Paypaytest\Classes\OrderItems();
-$orderItems->add('商品B(API)', 2, 1000);
+$orderItems->add('商品B(Native)', 2, 1000);
 
 $config = new \Paypaytest\Classes\Config([
     'merchantId'      => '737466058778624000',
@@ -18,19 +19,20 @@ $config = new \Paypaytest\Classes\Config([
     'production'      => false,
 ]);
 
-$paypay = new \Paypaytest\Classes\PayPayAdapter($config);
+$paypay = new \Paypaytest\Classes\PayPayAdapterNativeConnect($config);
 $result = $paypay->createCode($orderItems, '商品B x 1');
 
-$url = $result['data']['url'];
-$codeId = $result['data']['codeId'];
+var_dump($result['resultInfo']['code']);
 
-$returnJSON = [
-    'paypayURL' => $url,
-    'QRCodeID' => $codeId,
-    'redirectURL' => 'paypaytest02api://paypaytest02api.com/homePage'
-];
+// $url = $result['data']['url'];
+// $codeId = $result['data']['codeId'];
 
-header('Content-Type: application/json');
-header("Access-Control-Allow-Origin: *");
+// $returnJSON = [
+//     'paypayURL' => $url,
+//     'QRCodeID' => $codeId,
+//     'redirectURL' => 'paypaytest02api://paypaytest02api.com/homePage'
+// ];
 
-echo json_encode($returnJSON);
+// header("Access-Control-Allow-Origin: *");
+
+// echo json_encode($returnJSON);
