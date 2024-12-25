@@ -7,9 +7,6 @@ require_once './paypaytest/classes/Config.php';
 require_once './paypaytest/classes/PayPayAdapter.php';
 
 $orderItems = new \Paypaytest\Classes\OrderItems();
-// $orderItems->add('商品A', 1, 500);
-// $orderItems->add('商品B', 3, 1000);
-// $orderItems->add('商品C', 2, 900);
 $orderItems->add('商品B', 1, 1000);
 
 $config = new \Paypaytest\Classes\Config([
