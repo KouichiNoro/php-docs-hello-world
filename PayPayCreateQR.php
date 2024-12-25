@@ -7,10 +7,7 @@ require_once './paypaytest/classes/Config.php';
 require_once './paypaytest/classes/PayPayAdapter.php';
 
 $orderItems = new \Paypaytest\Classes\OrderItems();
-// $orderItems->add('商品A', 1, 500);
-// $orderItems->add('商品B', 3, 1000);
-// $orderItems->add('商品C', 2, 900);
-$orderItems->add('商品B', 1, 1000);
+$orderItems->add('商品B(API)', 2, 1000);
 
 $config = new \Paypaytest\Classes\Config([
     'merchantId'      => '737466058778624000',
@@ -25,14 +22,14 @@ $paypay = new \Paypaytest\Classes\PayPayAdapter($config);
 $result = $paypay->createCode($orderItems, '商品B x 1');
 
 $url = $result['data']['url'];
-print "redirect-url: <a href='$url'>$url</a> ";
-print "<a href=\"javascript: window.open('$url', '_blank');\">Click</a> <br>\n";
-
-print "<br>\n";
-
 $codeId = $result['data']['codeId'];
-print "codeId: $codeId <br>\n ";
 
-print "<hr>\n";
+$returnJSON = [
+    'paypayURL' => $url,
+    'QRCodeID' => $codeId,
+    'redirectURL' => 'paypaytest02api://paypaytest02api.com/homePage'
+];
 
-var_dump($result);die();
+header("Access-Control-Allow-Origin: *");
+
+echo json_encode($returnJSON);
